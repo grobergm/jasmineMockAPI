@@ -1,20 +1,6 @@
-class MockAPI {
-	constructor(){
-		this.db={
-		users:
-			[
-				{
-					name:"Jack",
-					password:"beanstock",
-					posts:["I just found some magic beans!"]
-				},
-				{
-					name:"Jill",
-					password:"hill",
-					posts:["Jack fell down!"]
-				},
-			]
-		};
+module.exports=class MockAPI {
+	constructor(database){
+		this.db=database;
 		this.processRequest=this.processRequest.bind(this);
 		this.getUser=this.getUser.bind(this);
 		this.passwordIsValid=this.passwordIsValid.bind(this);
@@ -26,9 +12,9 @@ class MockAPI {
 			setTimeout(()=>{
 				switch(request.method){
 					case 'get':
-						const posts=this.getUser(request).posts
-							if(posts!==-1){
-								resolve({status:200,posts:posts})
+						const user=this.getUser(request)
+							if(user){
+								resolve({status:200,posts:user.posts})
 							} else {
 								resolve({status:404, message:"Not Found"})
 							}
@@ -66,5 +52,3 @@ class MockAPI {
 		this.db.users[userIndex].posts.push(request.params.post)
 	}
 }
-
-module.exports=MockAPI

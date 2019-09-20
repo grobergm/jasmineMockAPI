@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node node_modules/jasmine/bin/jasmine"
+    "jasmine": "node node_modules/jasmine/bin/jasmine",
+    "jest": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "jasmine": "^3.4.0",
-    "jasmine-ajax": "^4.0.0"
+    "jasmine-ajax": "^4.0.0",
+    "jest": "^24.9.0"
   }
 }
